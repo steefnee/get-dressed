@@ -1,0 +1,1 @@
+{"head":"","body":"","js":"\nTemplate.__checkName(\"sign-in\");\nTemplate[\"sign-in\"] = new Template(\"Template.sign-in\", (function() {\n  var view = this;\n  return HTML.Raw('<div class=\"container\">\\n    <h1>Get Dressed</h1>\\n  </div>');\n}));\n","bodyAttrs":{}}

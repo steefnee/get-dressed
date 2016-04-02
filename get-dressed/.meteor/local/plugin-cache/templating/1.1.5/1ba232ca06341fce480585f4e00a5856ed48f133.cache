@@ -1,0 +1,1 @@
+{"head":"","body":"","js":"\nTemplate.__checkName(\"add-item-tag\");\nTemplate[\"add-item-tag\"] = new Template(\"Template.add-item-tag\", (function() {\n  var view = this;\n  return \"\";\n}));\n","bodyAttrs":{}}
