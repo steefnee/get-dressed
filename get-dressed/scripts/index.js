@@ -1,4 +1,13 @@
+Items = new Mongo.Collection("items");
+
+
+
 if(Meteor.isClient){
+
+
+
+
+
     Template.register.events({
       'submit form': function(event) {
         Router.go('/login');
@@ -7,7 +16,7 @@ if(Meteor.isClient){
         var emailVar = event.target.registerEmail.value;
         var passwordVar = event.target.registerPassword.value;
         Accounts.createUser({
-          name: nameVar,
+          username: nameVar,
           email: emailVar,
           password: passwordVar
 
@@ -35,24 +44,68 @@ if(Meteor.isClient){
       }
     });
 
-    Template.additem.events({
-        'click .capture': function(){
-          console.log("Button clicked.");
-          MeteorCamera.getPicture({}, function(error, data){
-            Session.set('photo', data);
-          });
-        } 
+    Template.additem.helpers({
+      photo: function () {
+        return Session.get("photo");
+      }
+
     });
 
-    Template.additem.helpers({
-      'photo': function(){
-        return Session.get('photo');
-      }
+
+    Template.additem.events({
+        'click button': function(){
+          var cameraOptions = {
+            width: 340,
+            height: 340
+          };
+
+          MeteorCamera.getPicture(cameraOptions, function(error, data){
+            console.log(data);
+            Session.set('photo', data);
+
+            var imageFile = data;
+            var newId = Items.insert({
+              imageFile,
+              createdAt: new Date(), // current time
+              tags: [],
+              userId: this.userId,
+            });
+
+            Router.go('addItemTag', { id: newId });
+          });
+
+
+        }
     });
-}
+
+    Template.addItemTag.events({
+        'change #itemType': function() {
+          var x = $('#itemType select').val();
+          var lastItem = Router.current().params.id;
+          Items.update({ _id: lastItem }, { 
+            $push: {
+              tags: x
+            }
+          });
+        }
+    });
+
+    Template.addItemTag.helpers({
+      photo: function () {
+        return Session.get("photo");
+      },
+
+      lastItem: function() {
+        return Items.findOne({}, {sort: {createdAt: -1, limit: 1}});
+      }
+
+    });
+
+
+}  //here is the end of the client side
 
 if(Meteor.isServer){
-    // server code goes here
+
 }
 
 
@@ -114,9 +167,18 @@ Router.route('/register', function () {
   this.render('register');
 });
 
-Router.route('/add-item-tag', function () {
-  this.render('add-item-tag');
+Router.route('/addItemTag/:id', function () {
+  this.render('addItemTag');
+}, {
+  name: 'addItemTag'
 });
+
+/*
+  /items          :: list items
+  /item/:id       :: view item by :id
+  /item/:id/tag   :: tag an item
+  /item/add       :: add item
+*/
 
 Router.route('/', function () {
   this.render('login');

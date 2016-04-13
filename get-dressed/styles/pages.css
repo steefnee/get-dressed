@@ -19,8 +19,6 @@ hr {
 }
 
 
-
-
 .title-bar {
   height: 60px;
   background-color: white;
@@ -104,10 +102,28 @@ hr {
   margin: auto;
 }
 
+.short-rule-add {
+
+  border-width: 1px;
+  border-style: solid;
+  border-color: #e1e1e1;
+  width: 100px;
+  margin: auto;
+  top: 10px;
+}
+
+
 .sign-up {
   position: relative;
   text-align: center;
   top: 50px;
+  color: #757575
+}
+
+.back {
+  position: relative;
+  text-align: center;
+  top: 20px;
   color: #757575
 }
 
@@ -125,4 +141,21 @@ hr {
   border-left: 1px solid gray;
   min-height: 70px;
   text-align: center;
+}
+
+.take-photo {
+  position: relative;
+  margin: auto;
+  top: 20px;
+
+}
+
+.itemPhoto {
+  background-color: #757575;
+  width: 340px;
+  height: 340px;
+  margin-top: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 10px;
 }

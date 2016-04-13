@@ -23,3 +23,5 @@ iron:router
 accounts-ui
 accounts-password
 mdg:camera
+aldeed:simple-schema
+okland:camera-ui
