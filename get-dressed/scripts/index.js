@@ -4,10 +4,6 @@ Items = new Mongo.Collection("items");
 
 if(Meteor.isClient){
 
-
-
-
-
     Template.register.events({
       'submit form': function(event) {
         Router.go('/login');
@@ -87,7 +83,20 @@ if(Meteor.isClient){
               tags: x
             }
           });
+        },
+        'change #occasionType': function() {
+          var y = $('#occasionType select').val();
+          var lastItem = Router.current().params.id;
+          Items.update({ _id: lastItem }, { 
+            $push: {
+              tags: y
+            }
+          });
+        },
+        'click button': function() {
+            Router.go('/dashboard');
         }
+
     });
 
     Template.addItemTag.helpers({
@@ -100,6 +109,7 @@ if(Meteor.isClient){
       }
 
     });
+
 
 
 }  //here is the end of the client side
@@ -136,8 +146,8 @@ Router.route('/dashboard', {
   }
 });
 
-Router.route('/occasion-choices', function () {
-  this.render('occasion-choices');
+Router.route('/occasionChoices', function () {
+  this.render('occasionChoices');
 });
 
 Router.route('/select-outfit', function () {

@@ -19,6 +19,7 @@ hr {
 }
 
 
+
 .title-bar {
   height: 60px;
   background-color: white;
@@ -61,6 +62,34 @@ hr {
 
 .outfit-section {
   height: 418px;
+}
+
+#top { 
+  width: 50%;
+  height: 50%;
+  float: left;
+  border-right: 1px solid gray; 
+}
+
+#outerwear {
+  width: 50%;
+  height: 50%;
+  float: left;
+  border-bottom: 1px solid gray;
+}
+
+#bottom {
+  width: 50%;
+  height: 50%;
+  float: left;
+  border-top: 1px solid gray;
+}
+
+#shoes {
+  width: 50%;
+  height: 50%;
+  float: left;
+  border-left: 1px solid gray;
 }
 
 .bottom-button {
@@ -159,3 +188,5 @@ hr {
   margin-left: auto;
   margin-bottom: 10px;
 }
+
+

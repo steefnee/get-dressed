@@ -1,4 +1,4 @@
-<template name="occasion-choices">
+<template name="occasionChoices">
   <div class="valign-wrapper title-bar">
     <span class="task-title">Get Dressed</span>
   </div>
@@ -10,15 +10,15 @@
   
   <div class="container">
     <div class="valign-wrapper button">
-      <span class="button-text">CASUAL</span>
+      <a class="button-text casual" href="{{pathFor route='outfits'}}">CASUAL</a>
     </div>
     <div class="divider"></div>
     <div class="valign-wrapper button">
-      <span class="button-text">WORK</span>
+      <a class="button-text work" href="{{pathFor route='outfits'}}">WORK</a>
     </div>
     <div class="divider"></div>
     <div class="valign-wrapper button">
-      <span class="button-text">FORMAL</span>
+      <a class="button-text formal" href="{{pathFor route='outfits'}}">FORMAL</a>
     </div>
     <div class="divider"></div>
     <hr class="short-rule">
