@@ -9,7 +9,7 @@
   </div>
 
   
-  <div class="container">
+  <div class="container addItemContainer">
     <div class="itemPhoto"><img src="{{photo}}"></div>
   </div>
 
@@ -17,10 +17,14 @@
     <div class="col s12" style="height: 60px;">
     <button class="btn col s6 push-s3 take-photo">Take a Photo</button>
     </div>
+    <br>
+    <br>
+
     <hr class="short-rule-add">
       <div class="back">
-        <a class="waves-effect btn-flat" href="{{pathFor route='addItemTag'}}">Tag Item</a>
+        <a class="waves-effect btn-flat toItemTag">Tag Item</a>
       </div>
+
       <div class="back">
         <a class="waves-effect btn-flat" href="{{pathFor route='dashboard'}}">Back</a>
       </div>

@@ -1,4 +1,5 @@
 Items = new Mongo.Collection("items");
+var getRand = Math.floor((Math.random() * Items.length) + 1);
 
 
 
@@ -66,11 +67,8 @@ if(Meteor.isClient){
               tags: [],
               userId: this.userId,
             });
-
-            Router.go('addItemTag', { id: newId });
+              Router.go('addItemTag', { id: newId });               
           });
-
-
         }
     });
 
@@ -110,7 +108,67 @@ if(Meteor.isClient){
 
     });
 
+    Template.occasionChoices.events({
+      'click .work': function() {
+          Router.go("/outfits");
+      }      
+    });
 
+    Template.outfits.helpers({
+
+      topOnly: function () {
+       var currentOccasion = Router.current().params.id;
+        var topItem = Items.find({"$and": [
+            {tags:"top"}, 
+            {tags:currentOccasion}
+            ]
+          }).fetch();
+
+        var randTop = topItem[Math.floor(Math.random() * topItem.length)];
+        if ( randTop != null ) return randTop.imageFile;
+        return null;
+      },
+
+      bottomOnly: function () {
+        var currentOccasion = Router.current().params.id;
+        var bottomItem = Items.find({"$and": [
+            {tags:"bottom"}, 
+            {tags:currentOccasion}
+            ]
+          }).fetch();
+
+        var randBottom = bottomItem[Math.floor(Math.random() * bottomItem.length)];
+        if ( randBottom != null ) return randBottom.imageFile;
+        return null;
+      },
+
+      outerwearOnly: function () {
+        var currentOccasion = Router.current().params.id;
+        var outerwearItem = Items.find({"$and": [
+            {tags:"outerwear"}, 
+            {tags:currentOccasion}
+            ]
+          }).fetch();
+
+        var randOuterwear = outerwearItem[Math.floor(Math.random() * outerwearItem.length)];
+        if ( randOuterwear != null ) return randOuterwear.imageFile;
+        return null;
+      },
+
+      shoesOnly: function () {
+        var currentOccasion = Router.current().params.id;
+        var shoeItem = Items.find({"$and": [
+            {tags:"shoes"}, 
+            {tags:currentOccasion}
+            ]
+          }).fetch();
+
+        var randShoes = shoeItem[Math.floor(Math.random() * shoeItem.length)];
+        if ( randShoes != null ) return randShoes.imageFile;
+        return null;
+      }
+
+    });
 
 }  //here is the end of the client side
 
@@ -154,8 +212,11 @@ Router.route('/select-outfit', function () {
   this.render('select-outfit');
 });
 
-Router.route('/outfits', function () {
-  this.render('outfits');
+
+
+Router.route('/outfits/:id', {
+  template: 'outfits'
+  
 });
 
 Router.route('/login', {
@@ -190,6 +251,8 @@ Router.route('/addItemTag/:id', function () {
   /item/add       :: add item
 */
 
+
+
 Router.route('/', function () {
   this.render('login');
 });
@@ -198,4 +261,6 @@ Router.route('/additem', function () {
   name: 'additem',
   this.render('additem');
 });
+
+
 

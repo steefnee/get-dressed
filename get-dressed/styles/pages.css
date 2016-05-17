@@ -19,7 +19,6 @@ hr {
 }
 
 
-
 .title-bar {
   height: 60px;
   background-color: white;
@@ -64,11 +63,16 @@ hr {
   height: 418px;
 }
 
+.clothingItem {
+  max-height: 100%;
+}
+
 #top { 
   width: 50%;
   height: 50%;
   float: left;
   border-right: 1px solid gray; 
+  overflow: hidden;
 }
 
 #outerwear {
@@ -76,6 +80,8 @@ hr {
   height: 50%;
   float: left;
   border-bottom: 1px solid gray;
+  overflow: hidden;
+
 }
 
 #bottom {
@@ -83,6 +89,8 @@ hr {
   height: 50%;
   float: left;
   border-top: 1px solid gray;
+  overflow: hidden;
+
 }
 
 #shoes {
@@ -90,6 +98,8 @@ hr {
   height: 50%;
   float: left;
   border-left: 1px solid gray;
+  overflow: hidden;
+
 }
 
 .bottom-button {
@@ -103,14 +113,14 @@ hr {
   color: #757575;
 }
 
-.ion-ios-arrow-left {
+.ion-ios-refresh {
   float: left;
   margin-left: 25px;
   font-size: 30px;
   color: #757575;
 }
 
-.ion-ios-arrow-right {
+.ion-ios-close {
   float: right;
   margin-right: 25px;
   font-size: 30px;
@@ -179,11 +189,15 @@ hr {
 
 }
 
-.itemPhoto {
-  background-color: #757575;
-  width: 340px;
-  height: 340px;
+.addItemContainer {
   margin-top: 10px;
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+}
+
+.itemPhoto {
+  max-height: 100%;
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 10px;
