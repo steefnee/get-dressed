@@ -172,6 +172,10 @@ if(Meteor.isClient){
 
 }  //here is the end of the client side
 
+
+
+
+
 if(Meteor.isServer){
 
 }
